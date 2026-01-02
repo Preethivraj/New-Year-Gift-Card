@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy New Year 🎆</title>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle, #000428, #004e92);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 0 25px gold;
+            z-index: 10;
+            animation: zoom 2s ease;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 36px;
+        }
+
+        h2 {
+            color: #ffd700;
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        @keyframes zoom {
+            from { opacity: 0; transform: scale(0.6); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Fireworks */
+        .firework {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: gold;
+            border-radius: 50%;
+            animation: explode 1.5s infinite;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(6); opacity: 0; }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎆 Happy New Year 2026 🎆</h1>
+    <h2 id="name">VARSHA</h2>
+    <p>
+        May this New Year bring happiness, success, and peace to your life.
+        May all your dreams come true ✨
+    </p>
+    <p>🎉 Wishing you a bright future 🎉</p>
+</div>
+
+<script>
+    // Get name from URL
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    if (name) {
+        document.getElementById("name").innerText = "Dear " + name;
+    }
+
+    // Fireworks effect
+    setInterval(() => {
+        const fw = document.createElement("div");
+        fw.className = "firework";
+        fw.style.left = Math.random() * window.innerWidth + "px";
+        fw.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 1500);
+    }, 300);
+</script>
+
+</body>
+</html>
